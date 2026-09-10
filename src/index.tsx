@@ -2,9 +2,9 @@ import { render } from 'preact';
 import { useEffect } from 'preact/hooks';
 import { LocationProvider, Router, Route, useLocation } from 'preact-iso';
 
-import { Header } from './components/Header.jsx';
-import { Home } from './pages/Home/index.jsx';
-import './style.css';
+import { Landing, Week1 } from './pages';
+import { Side } from './components';
+import './styles/style.css';
 
 function NotFound() {
   const { route } = useLocation();
@@ -18,12 +18,18 @@ function NotFound() {
 export function App() {
   return (
     <LocationProvider>
-      <Header />
       <main>
-        <Router>
-          <Route path='/' component={Home} />
-          <Route default component={NotFound} />
-        </Router>
+        <Side/>
+        <div class='main-content'>
+          <Router>
+            <Route path='/' component={Landing} />
+            <Route
+              path='/Yuxian_Kao_CC_FA26/week1-assignment'
+              component={Week1}
+            />
+            <Route default component={NotFound} />
+          </Router>
+        </div>
       </main>
     </LocationProvider>
   );
