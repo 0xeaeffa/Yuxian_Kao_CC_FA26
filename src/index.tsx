@@ -2,7 +2,7 @@ import { render } from 'preact';
 import { useEffect } from 'preact/hooks';
 import { LocationProvider, Router, Route, useLocation } from 'preact-iso';
 
-import { Landing, Week1 } from './pages';
+import { Landing, Week1, Week2 } from './pages';
 import { Side } from './components';
 
 import './styles/style.css';
@@ -21,13 +21,17 @@ export function App() {
   return (
     <LocationProvider>
       <main>
-        <Side/>
+        <Side />
         <div class='main-content'>
           <Router>
             <Route path='/' component={Landing} />
             <Route
               path='/Yuxian_Kao_CC_FA26/week1-assignment'
               component={Week1}
+            />
+            <Route
+              path='/Yuxian_Kao_CC_FA26/week2-assignment'
+              component={Week2}
             />
             <Route default component={NotFound} />
           </Router>

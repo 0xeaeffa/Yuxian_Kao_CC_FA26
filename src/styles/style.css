@@ -70,7 +70,8 @@ main {
 
 @media (max-width: 639px) {
   main {
-    margin: 2rem;
+    padding: calc(var(--layout-padding) / 2);
+    gap: calc(var(--layout-padding) / 2);
   }
 }
 

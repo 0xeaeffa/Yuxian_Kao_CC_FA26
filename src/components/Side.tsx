@@ -1,6 +1,6 @@
 import { useLocation } from 'preact-iso';
 
-const assignmentTotal = 1;
+const assignmentTotal = 2;
 const routeMappings = [{ name: 'landing page', route: '/' }];
 getAssignmentRoutes();
 
