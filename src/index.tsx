@@ -1,10 +1,20 @@
 import { render } from 'preact';
-import { LocationProvider, Router, Route } from 'preact-iso';
+import { useEffect } from 'preact/hooks';
+import { LocationProvider, Router, Route, useLocation } from 'preact-iso';
+import { route } from 'preact-router';
 
 import { Header } from './components/Header.jsx';
 import { Home } from './pages/Home/index.jsx';
-import { NotFound } from './pages/_404.jsx';
 import './style.css';
+
+function NotFound() {
+  const { route } = useLocation();
+  useEffect(() => {
+    // redirect to home, replacing history entry
+    route('/', true);
+  }, []);
+  return null;
+}
 
 export function App() {
   return (
