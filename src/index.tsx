@@ -1,7 +1,6 @@
 import { render } from 'preact';
 import { useEffect } from 'preact/hooks';
 import { LocationProvider, Router, Route, useLocation } from 'preact-iso';
-import { route } from 'preact-router';
 
 import { Header } from './components/Header.jsx';
 import { Home } from './pages/Home/index.jsx';
