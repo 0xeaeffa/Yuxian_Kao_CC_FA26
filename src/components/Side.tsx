@@ -7,7 +7,7 @@ getAssignmentRoutes();
 function getAssignmentRoutes() {
   for (var i = 0; i < assignmentTotal; i++) {
     routeMappings.push({
-      name: `week${i + 1} assignment`,
+      name: `week-${i + 1} assignment`,
       route: `/Yuxian_Kao_CC_FA26/week${i + 1}-assignment`,
     });
   }
@@ -16,13 +16,14 @@ function getAssignmentRoutes() {
 export const Side = () => {
   const { route } = useLocation();
   const handleNavigate = (routePath: string) => {
-    route(routePath, false); 
+    route(routePath, false);
   };
 
   return (
     <div className='sidebar-cont'>
       {routeMappings.map((r) => (
-        <div className='sidebar-grid' key={`sidebar-${r.name}`}>
+        // <div className='sidebar-grid' key={`sidebar-${r.name}`}>
+        <div key={`sidebar-${r.name}`}>
           <button
             className={`sidebar-button ${location.pathname === r.route && 'selected'}`}
             onClick={() => handleNavigate(r.route)}
