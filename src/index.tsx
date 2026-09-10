@@ -4,7 +4,9 @@ import { LocationProvider, Router, Route, useLocation } from 'preact-iso';
 
 import { Landing, Week1 } from './pages';
 import { Side } from './components';
+
 import './styles/style.css';
+import './styles/assignment-style.css';
 
 function NotFound() {
   const { route } = useLocation();
