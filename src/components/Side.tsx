@@ -1,17 +1,7 @@
 import { useLocation } from 'preact-iso';
+import { getRouteMappings } from '../utils';
 
-const assignmentTotal = 2;
-const routeMappings = [{ name: 'landing page', route: '/' }];
-getAssignmentRoutes();
-
-function getAssignmentRoutes() {
-  for (var i = 0; i < assignmentTotal; i++) {
-    routeMappings.push({
-      name: `week-${i + 1} assignment`,
-      route: `/Yuxian_Kao_CC_FA26/week${i + 1}-assignment`,
-    });
-  }
-}
+const routeMappings = getRouteMappings();
 
 export const Side = () => {
   const { route } = useLocation();
