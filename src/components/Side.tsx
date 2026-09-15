@@ -1,7 +1,7 @@
 import { useLocation } from 'preact-iso';
-import { getRouteMappings } from '../utils';
+import { landingTab, getAssignmentTabs } from '../utils';
 
-const routeMappings = getRouteMappings();
+const assignmentTabs = getAssignmentTabs(2);
 
 export const Side = () => {
   const { route } = useLocation();
@@ -11,7 +11,14 @@ export const Side = () => {
 
   return (
     <div className='sidebar-cont'>
-      {routeMappings.map((r) => (
+      <button
+        className={`sidebar-button ${location.pathname === landingTab.route && 'selected'}`}
+        onClick={() => handleNavigate(landingTab.route)}
+      >
+        <p>{landingTab.name}</p>
+      </button>
+
+      {assignmentTabs.map((r) => (
         // <div className='sidebar-grid' key={`sidebar-${r.name}`}>
         <div key={`sidebar-${r.name}`}>
           <button

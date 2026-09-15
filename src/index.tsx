@@ -1,6 +1,7 @@
 import { render } from 'preact';
 import { useEffect } from 'preact/hooks';
 import { LocationProvider, Router, Route, useLocation } from 'preact-iso';
+import { repoName, getAssignmentPaths } from './utils';
 
 import { Landing, Week1, Week2 } from './pages';
 import { Side } from './components';
@@ -12,9 +13,16 @@ function NotFound() {
   const { route } = useLocation();
   useEffect(() => {
     // redirect to home, replacing history entry
-    route('/', true);
+    route(`/${repoName}`, true);
   }, []);
   return null;
+}
+function assignmentPathsMap() {
+  const assignment = [Week1, Week2];
+  return assignment.map((a, i) => ({
+    component: a,
+    path: getAssignmentPaths(2)[i],
+  }));
 }
 
 export function App() {
@@ -24,15 +32,10 @@ export function App() {
         <Side />
         <div class='main-content'>
           <Router>
-            <Route path='/' component={Landing} />
-            <Route
-              path='/Yuxian_Kao_CC_FA26/week1-assignment'
-              component={Week1}
-            />
-            <Route
-              path='/Yuxian_Kao_CC_FA26/week2-assignment'
-              component={Week2}
-            />
+            <Route path={`/${repoName}`} component={Landing} />
+            {assignmentPathsMap().map((a) => (
+              <Route path={a.path} component={a.component} />
+            ))}
             <Route default component={NotFound} />
           </Router>
         </div>
