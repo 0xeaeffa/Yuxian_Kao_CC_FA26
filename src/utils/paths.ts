@@ -1,7 +1,6 @@
 
 export const repoName = "Yuxian_Kao_CC_FA26";
 
-// const assignmentTotal = 2;
 export const landingTab = { name: 'landing page', route: `/${repoName}` };
 
 export function getAssignmentTabs(total: number) {
@@ -12,7 +11,6 @@ export function getAssignmentTabs(total: number) {
       route: `/${repoName}/week${i + 1}-assignment`,
     });
   }
-
   return assignmentTabs;
 }
 
