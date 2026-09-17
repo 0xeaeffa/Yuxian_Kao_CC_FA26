@@ -29,15 +29,17 @@ export function App() {
   return (
     <LocationProvider>
       <main>
-        <Side />
-        <div class='main-content'>
-          <Router>
-            <Route path={`/${repoName}`} component={Landing} />
-            {assignmentPathsMap().map((a) => (
-              <Route path={a.path} component={a.component} />
-            ))}
-            <Route default component={NotFound} />
-          </Router>
+        <div class='main-base'>
+          <Side />
+          <div class='main-content'>
+            <Router>
+              <Route path={`/${repoName}`} component={Landing} />
+              {assignmentPathsMap().map((a) => (
+                <Route path={a.path} component={a.component} />
+              ))}
+              <Route default component={NotFound} />
+            </Router>
+          </div>
         </div>
       </main>
     </LocationProvider>
