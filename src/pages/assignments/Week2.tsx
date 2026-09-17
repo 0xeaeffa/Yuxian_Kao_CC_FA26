@@ -5,8 +5,8 @@ export const Week2 = () => {
     <div>
       <p>Week-2 Assignment</p>
       <SketchW2_1 />
-      {/* <SketchW2_2 />
-      <SketchW2_3 /> */}
+      {/* <SketchW2_2 /> */}
+      {/* <SketchW2_3 /> */}
     </div>
   );
 };
