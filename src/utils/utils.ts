@@ -20,3 +20,7 @@ HTMLCanvasElement.prototype.getContext = function (
   }
   return originalGetContext.call(this, type, attributes);
 };
+
+export const degreesToRadians = (degrees: number): number => {
+  return degrees * (Math.PI / 180);
+};

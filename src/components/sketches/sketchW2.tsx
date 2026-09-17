@@ -1,5 +1,5 @@
 import { useLayoutEffect, useRef } from 'preact/hooks';
-import { mapRange, originalGetContext } from '../../utils';
+import { mapRange, degreesToRadians } from '../../utils';
 import p5 from 'p5';
 
 interface TileSpecs {
@@ -39,12 +39,13 @@ function placeTiles(
         (mouseX > tiles[i].pos.x && mouseX < tiles[i].pos.x + tileSize) ||
         (mouseY > tiles[i].pos.y && mouseY < tiles[i].pos.y + tileSize)
       ) {
-        let layerColor = p.createVector(255, 163, 180);
+        // let layerColor = p.createVector(255, 226, 168);
+        let layerColor = p.createVector(172, 180, 242);
 
         // 360 is an arbitrary number kill this guy
-        r = tiles[i].color.x * (mapRange(dist, 0, 360, layerColor.x/255, 1));
-        g = tiles[i].color.y * (mapRange(dist, 0, 360, layerColor.y/255, 1));
-        b = tiles[i].color.z * (mapRange(dist, 0, 360, layerColor.z/255, 1));
+        r = tiles[i].color.x * mapRange(dist, 0, 360, layerColor.x / 255, 1);
+        g = tiles[i].color.y * mapRange(dist, 0, 360, layerColor.y / 255, 1);
+        b = tiles[i].color.z * mapRange(dist, 0, 360, layerColor.z / 255, 1);
       }
     }
     p.fill(r, g, b);
@@ -70,8 +71,8 @@ function tilesGen(
   for (let i = 0; i < tileAmount; i++) {
     for (let j = 0; j < tileAmount; j++) {
       let r = mapRange(Math.random(), 0, 1, 220, 230);
-      let g = mapRange(Math.random(), 0, 1, 220, 250);
-      let b = mapRange(Math.random(), 0, 1, 230, 255);
+      let g = mapRange(Math.random(), 0, 1, 220, 248);
+      let b = mapRange(Math.random(), 0, 1, 246, 255);
 
       tiles.push({
         translate: p.createVector(
@@ -134,8 +135,6 @@ export const SketchW2_2 = () => {
   const canvasRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
-    originalGetContext;
-
     const instance = new p5((p: p5) => {
       const canvasSize = 480;
       const gap = 8;
@@ -149,25 +148,12 @@ export const SketchW2_2 = () => {
       p.setup = () => {
         p.createCanvas(canvasSize, canvasSize);
         p.angleMode(p.DEGREES);
-        // p.background(248);
 
         tiles = tilesGen(p, tileSize, tileAmount, gap, tileRotate);
       };
 
       p.draw = () => {
-        // p.background(128, 128, 128, 128);
         placeTiles(p, tiles, tileSize, bgColor, p.mouseX, p.mouseY);
-
-        // p.loadPixels();
-        // for (let i = 0; i < p.pixels.length; i += 4) {
-        //   p.pixels[i] = 255 - p.pixels[i]; // Red
-        //   p.pixels[i + 1] = 255 - p.pixels[i + 1]; // Green
-        //   p.pixels[i + 2] = 255 - p.pixels[i + 2]; // Blue
-        // }
-        // p.updatePixels();
-
-        // p.noStroke();
-        // p.ellipse(p.mouseX, p.mouseY, 50, 50);
       };
     }, canvasRef.current!);
 
@@ -182,13 +168,60 @@ export const SketchW2_3 = () => {
 
   useLayoutEffect(() => {
     const instance = new p5((p: p5) => {
+      const canvasSize = 480;
+      const bgColor = 250;
+      const lineAmount = 48;
+      const outerR = (canvasSize - 64) / 2;
+      const innerR = outerR * 0.08;
+
+      let pointX = canvasSize / 2;
+      let pointY = canvasSize / 2;
+      let xSpeed = 1.5;
+      let ySpeed = 3;
+
       p.setup = () => {
-        p.createCanvas(400, 400);
+        p.createCanvas(canvasSize, canvasSize);
+        // p.angleMode(p.DEGREES);
       };
 
       p.draw = () => {
-        p.background(220);
-        p.ellipse(p.mouseX, p.mouseY, 50, 50);
+        p.background(bgColor, bgColor, bgColor);
+
+        if (pointX > canvasSize - innerR || pointX < innerR) {
+          xSpeed *= -1;
+        }
+        if (pointY > canvasSize - innerR || pointY < innerR) {
+          ySpeed *= -1;
+        }
+
+        for (let i = 0; i < lineAmount; i++) {
+          let angle = i * (360 / lineAmount);
+          let outerX =
+            canvasSize / 2 + outerR * Math.cos(degreesToRadians(angle));
+          let outerY =
+            canvasSize / 2 + outerR * Math.sin(degreesToRadians(angle));
+          let outerPos = p.createVector(outerX, outerY);
+
+          let centerX = pointX + innerR * Math.cos(degreesToRadians(angle));
+          let centerY = pointY + innerR * Math.sin(degreesToRadians(angle));
+          let centerPos = p.createVector(centerX, centerY);
+
+          let dir = p5.Vector.sub(centerPos, outerPos);
+          // p.strokeWeight(2);
+          p.line(
+            outerPos.x,
+            outerPos.y,
+            outerPos.x + dir.x,
+            outerPos.y + dir.y,
+          );
+
+          // p.strokeWeight(1);
+          p.circle(outerPos.x, outerPos.y, 8);
+          p.circle(centerPos.x, centerPos.y, 2);
+        }
+
+        pointX += xSpeed;
+        pointY += ySpeed;
       };
     }, canvasRef.current!);
 
