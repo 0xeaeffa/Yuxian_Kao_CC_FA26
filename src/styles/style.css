@@ -12,7 +12,8 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 
-  --sidebar-padding: 0.4rem;
+  /* --sidebar-padding;*/
+  /* --tab-height; */
   --transition-time: 0.3s;
 }
 
@@ -73,7 +74,7 @@ main {
   transition: width var(--transition-time);
 }
 .sidebar-button {
-  height: 2rem;
+  height: var(--tab-height);
 	width: 100%;
   display: flex;
   align-items: center;

@@ -1,19 +1,36 @@
 import { useLocation } from 'preact-iso';
-import { useState } from 'preact/hooks';
+import { useState, useRef, useEffect } from 'preact/hooks';
 import { landingTab, getAssignmentTabs } from '../utils';
 
 const assignmentTabs = getAssignmentTabs(2);
 
 export const Side = () => {
   const { route } = useLocation();
+  const ref = useRef<HTMLDivElement>(null);
   const [open, setOpen] = useState<boolean>(true);
 
   const handleNavigate = (routePath: string) => {
     route(routePath, false);
   };
 
+  const tabHeight = '2.4rem';
+  const padding = '0.4rem';
+  useEffect(() => {
+    if (ref.current) {
+      const r = ref.current;
+      r.style.setProperty('--sidebar-padding', padding);
+      r.style.setProperty('--tab-height', tabHeight);
+    }
+  }, []);
+
   return (
-    <div className='sidebar-cont' style={{ width: open ? '12rem' : '4rem' }}>
+    <div
+      ref={ref}
+      className='sidebar-cont'
+      style={{
+        width: open ? '12rem' : `calc(${tabHeight} + calc(${padding} * 2))`,
+      }}
+    >
       <button className='sidebar-button' onClick={() => setOpen((p) => !p)}>
         x
       </button>
