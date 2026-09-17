@@ -178,6 +178,7 @@ export const SketchW2_3 = () => {
       let pointY = canvasSize / 2;
       let xSpeed = 1.5;
       let ySpeed = 3;
+      let lerpAmount = 0.2;
 
       p.setup = () => {
         p.createCanvas(canvasSize, canvasSize);
@@ -192,6 +193,14 @@ export const SketchW2_3 = () => {
         }
         if (pointY > canvasSize - innerR || pointY < innerR) {
           ySpeed *= -1;
+        }
+
+        if (p.mouseIsPressed) {
+          pointX = p.lerp(pointX, p.mouseX, lerpAmount);
+          pointY = p.lerp(pointY, p.mouseY, lerpAmount);
+        } else {
+          pointX += xSpeed;
+          pointY += ySpeed;
         }
 
         for (let i = 0; i < lineAmount; i++) {
@@ -219,9 +228,6 @@ export const SketchW2_3 = () => {
           p.circle(outerPos.x, outerPos.y, 8);
           p.circle(centerPos.x, centerPos.y, 2);
         }
-
-        pointX += xSpeed;
-        pointY += ySpeed;
       };
     }, canvasRef.current!);
 
