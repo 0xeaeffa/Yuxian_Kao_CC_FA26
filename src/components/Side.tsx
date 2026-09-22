@@ -2,7 +2,7 @@ import { useLocation } from 'preact-iso';
 import { useState, useRef, useEffect } from 'preact/hooks';
 import { landingTab, getAssignmentTabs } from '../utils';
 
-const assignmentTabs = getAssignmentTabs(2);
+const assignmentTabs = getAssignmentTabs(3);
 
 export const Side = () => {
   const { route } = useLocation();

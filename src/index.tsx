@@ -3,7 +3,7 @@ import { useEffect } from 'preact/hooks';
 import { LocationProvider, Router, Route, useLocation } from 'preact-iso';
 import { repoName, getAssignmentPaths } from './utils';
 
-import { Landing, Week1, Week2 } from './pages';
+import { Landing, Week1, Week2, Week3 } from './pages';
 import { Side } from './components';
 
 import './styles/style.css';
@@ -18,10 +18,10 @@ function NotFound() {
   return null;
 }
 function assignmentPathsMap() {
-  const assignment = [Week1, Week2];
+  const assignment = [Week1, Week2, Week3];
   return assignment.map((a, i) => ({
     component: a,
-    path: getAssignmentPaths(2)[i],
+    path: getAssignmentPaths(3)[i],
   }));
 }
 
