@@ -24,7 +24,7 @@ function waveGen(
 
     p.line(startPos.x, startPos.y, endPos.x, endPos.y);
     p.ellipse(startPos.x, startPos.y, 2, 2);
-    p.ellipse(endPos.x, endPos.y, 6, 6);
+    p.ellipse(endPos.x, endPos.y, 5, 5);
   }
 }
 
@@ -89,15 +89,57 @@ export const SketchW3_2 = ({ canvasSize = 480 }: { canvasSize?: number }) => {
 
   useLayoutEffect(() => {
     const instance = new p5((p: p5) => {
-      const bgColor = '#f0f0f0';
+      const bgColor = '#f6f6f6';
+      const lineAmount = 48;
+      const lineRadius = 40;
+
+      let waveX = 0;
 
       p.setup = () => {
         p.createCanvas(canvasSize, canvasSize);
-        p.background(bgColor);
       };
 
       p.draw = () => {
-        p.ellipse(canvasSize / 2, canvasSize / 2, 10, 10);
+        p.background(bgColor);
+
+        const YPos = canvasSize / 2;
+        const interval = canvasSize / lineAmount;
+        for (let i = 0; i <= lineAmount; i++) {
+          const pos = p.createVector(i * interval, YPos);
+
+          p.push();
+          p.translate(pos.x, pos.y);
+          p.rotate(0.33 * Math.sin(0.5 * (i + waveX)));
+          p.translate(-pos.x, -pos.y);
+
+          p.line(pos.x, pos.y - lineRadius, pos.x, pos.y + lineRadius);
+          p.ellipse(pos.x, pos.y, 2, 2);
+          p.ellipse(pos.x, pos.y - lineRadius, 4, 4);
+          p.ellipse(pos.x, pos.y + lineRadius, 4, 4);
+          p.pop();
+        }
+
+        p.push();
+        p.translate(canvasSize * 1.25, 0);
+        p.rotate(Math.PI/2);
+        
+        for (let i = 0; i <= lineAmount; i++) {
+          const pos = p.createVector(i * interval, YPos);
+
+          p.push();
+          p.translate(pos.x, pos.y);
+          p.rotate(0.33 * Math.sin(0.5 * (i + waveX)));
+          p.translate(-pos.x, -pos.y);
+
+          p.line(pos.x, pos.y - lineRadius, pos.x, pos.y + lineRadius);
+          p.ellipse(pos.x, pos.y, 2, 2);
+          p.ellipse(pos.x, pos.y - lineRadius, 4, 4);
+          p.ellipse(pos.x, pos.y + lineRadius, 4, 4);
+          p.pop();
+        }
+        p.pop();
+
+        waveX += -0.2;
       };
     }, canvasRef.current!);
 
