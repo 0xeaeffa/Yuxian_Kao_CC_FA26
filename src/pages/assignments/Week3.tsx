@@ -1,11 +1,12 @@
-import { SketchW2_1, } from '../../components';
+import { SketchW3_1, SketchW3_2, SketchW3_3} from '../../components';
 
 export const Week3 = () => {
   return (
     <div>
       <p>Week-3 Assignment</p>
-      <SketchW2_1 />
-      <SketchW2_1 />
+      <SketchW3_1 />
+      {/* <SketchW3_2 />
+      <SketchW3_3 /> */}
     </div>
   );
 };
