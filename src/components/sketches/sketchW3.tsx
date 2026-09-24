@@ -121,8 +121,8 @@ export const SketchW3_2 = ({ canvasSize = 480 }: { canvasSize?: number }) => {
 
         p.push();
         p.translate(canvasSize * 1.25, 0);
-        p.rotate(Math.PI/2);
-        
+        p.rotate(Math.PI / 2);
+
         for (let i = 0; i <= lineAmount; i++) {
           const pos = p.createVector(i * interval, YPos);
 
@@ -154,15 +154,66 @@ export const SketchW3_3 = ({ canvasSize = 480 }: { canvasSize?: number }) => {
 
   useLayoutEffect(() => {
     const instance = new p5((p: p5) => {
-      const bgColor = '#f0f0f0';
+      const bgColor = '#f6f6f6';
+      const lineAmount = 48;
+      const lineRadius = 16;
+      const amplitude = 18;
+      const waveScale = 4;
+      const waveExtend = 150;
+
+      let waveX = 0;
 
       p.setup = () => {
         p.createCanvas(canvasSize, canvasSize);
-        p.background(bgColor);
       };
 
       p.draw = () => {
-        p.ellipse(canvasSize / 2, canvasSize / 2, 10, 10);
+        p.background(bgColor);
+
+        p.translate(canvasSize, 0);
+        p.rotate(Math.PI / 2);
+
+        const YPos = canvasSize / 2;
+        const interval = canvasSize / lineAmount;
+        const endXPos = 0 - waveScale / 2;
+        const endInterval = (canvasSize + waveScale) / lineAmount;
+
+        for (let i = 0; i <= lineAmount; i++) {
+          const pos = p.createVector(i * interval, YPos);
+
+          const endPosTop = p.createVector(
+            endXPos + i * endInterval,
+            YPos - amplitude * Math.cos(0.3 * (i + waveX)),
+          );
+          const endPosBot = p.createVector(
+            endXPos + i * endInterval,
+            YPos + amplitude * Math.cos(0.3 * (i + waveX)),
+          );
+
+          const extend = Math.max(
+            waveExtend *
+              (1 - Math.abs((canvasSize / 2 - pos.x) / (canvasSize / 2))),
+            waveExtend / 5,
+          );
+
+          p.push();
+          p.translate(pos.x, pos.y);
+          p.rotate(0.33 * Math.sin(0.5 * (i + waveX)));
+          p.translate(-pos.x, -pos.y);
+
+          p.line(pos.x, pos.y - lineRadius, endPosTop.x, endPosTop.y - extend);
+          p.line(pos.x, pos.y + lineRadius, endPosBot.x, endPosBot.y + extend);
+          p.ellipse(endPosTop.x, endPosTop.y - extend, 5, 5);
+          p.ellipse(endPosBot.x, endPosBot.y + extend, 5, 5);
+
+          p.line(pos.x, pos.y - lineRadius, pos.x, pos.y + lineRadius);
+          p.ellipse(pos.x, pos.y, 4, 4);
+          p.ellipse(pos.x, pos.y - lineRadius, 2, 2);
+          p.ellipse(pos.x, pos.y + lineRadius, 2, 2);
+          p.pop();
+        }
+
+        waveX += -0.16;
       };
     }, canvasRef.current!);
 
