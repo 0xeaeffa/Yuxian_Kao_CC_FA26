@@ -106,16 +106,34 @@ export const SketchW3_2 = ({ canvasSize = 480 }: { canvasSize?: number }) => {
         const interval = canvasSize / lineAmount;
         for (let i = 0; i <= lineAmount; i++) {
           const pos = p.createVector(i * interval, YPos);
+          const sine = Math.sin(0.5 * (i + waveX));
 
           p.push();
           p.translate(pos.x, pos.y);
-          p.rotate(0.33 * Math.sin(0.5 * (i + waveX)));
+          p.rotate(0.33 * sine);
           p.translate(-pos.x, -pos.y);
 
           p.line(pos.x, pos.y - lineRadius, pos.x, pos.y + lineRadius);
           p.ellipse(pos.x, pos.y, 2, 2);
           p.ellipse(pos.x, pos.y - lineRadius, 4, 4);
           p.ellipse(pos.x, pos.y + lineRadius, 4, 4);
+
+          if (sine > 0.8) {
+            for (let j = 0; j < 2; j++) {
+              if (j > 0) {
+                p.stroke('#bdbdbd');
+              }
+              p.ellipse(pos.x, pos.y - lineRadius * 1.8 - j * 20, 2, 2);
+            }
+          }
+          if (sine < -0.8) {
+            for (let j = 0; j < 2; j++) {
+              if (j > 0) {
+                p.stroke('#bdbdbd');
+              }
+              p.ellipse(pos.x, pos.y + lineRadius * 1.8 + j * 20, 2, 2);
+            }
+          }
           p.pop();
         }
 
