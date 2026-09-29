@@ -24,3 +24,38 @@ HTMLCanvasElement.prototype.getContext = function (
 export const degreesToRadians = (degrees: number): number => {
   return degrees * (Math.PI / 180);
 };
+
+import {
+  OneIcon,
+  TwoIcon,
+  ThreeIcon,
+  FourIcon,
+  FiveIcon,
+  SixIcon,
+  SevenIcon,
+  EightIcon,
+  NineIcon,
+  TenIcon,
+  ElevenIcon,
+  TwelveIcon,
+  ThirteenIcon,
+  FourteenIcon,
+  FifteenIcon,
+} from '../styles/icons';
+export const NumberIcons = [
+  OneIcon,
+  TwoIcon,
+  ThreeIcon,
+  FourIcon,
+  FiveIcon,
+  SixIcon,
+  SevenIcon,
+  EightIcon,
+  NineIcon,
+  TenIcon,
+  ElevenIcon,
+  TwelveIcon,
+  ThirteenIcon,
+  FourteenIcon,
+  FifteenIcon,
+];

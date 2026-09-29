@@ -9,7 +9,8 @@
 	"dependencies": {
 		"p5": "^2.3.3",
 		"preact": "^10.26.9",
-		"preact-iso": "^2.12.2"
+		"preact-iso": "^2.12.2",
+		"react-icons": "^5.7.0"
 	},
 	"devDependencies": {
 		"@preact/preset-vite": "^2.10.2",

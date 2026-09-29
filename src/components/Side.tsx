@@ -1,6 +1,7 @@
 import { useLocation } from 'preact-iso';
 import { useState, useRef, useEffect } from 'preact/hooks';
-import { landingTab, getAssignmentTabs } from '../utils';
+import { landingTab, getAssignmentTabs, NumberIcons } from '../utils';
+import { SpookyIcon } from '../styles/icons';
 
 const assignmentTabs = getAssignmentTabs(3);
 
@@ -23,6 +24,11 @@ export const Side = () => {
     }
   }, []);
 
+  function getIcon(index: number) {
+    const Icon = NumberIcons[index];
+    return Icon ? <Icon size={'0.9rem'}/> : null;
+  }
+
   return (
     <div
       ref={ref}
@@ -32,24 +38,24 @@ export const Side = () => {
       }}
     >
       <button className='sidebar-button' onClick={() => setOpen((p) => !p)}>
-        x
+        <SpookyIcon size={'1rem'}/>
       </button>
 
       <button
         className={`sidebar-button ${location.pathname === landingTab.route && 'selected'}`}
         onClick={() => handleNavigate(landingTab.route)}
       >
-        <p>{landingTab.name}</p>
+        <SpookyIcon size={'1rem'}/>
       </button>
 
-      {assignmentTabs.map((r) => (
+      {assignmentTabs.map((r, i) => (
         // <div className='sidebar-grid' key={`sidebar-${r.name}`}>
         <div key={`sidebar-${r.name}`}>
           <button
             className={`sidebar-button ${location.pathname === r.route && 'selected'}`}
             onClick={() => handleNavigate(r.route)}
           >
-            <p>{r.name}</p>
+            {open ? <p>{r.name}</p> : getIcon(i)}
           </button>
         </div>
       ))}

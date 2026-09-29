@@ -1,0 +1,19 @@
+export {
+  TbNumber1Small as OneIcon,
+  TbNumber2Small as TwoIcon,
+  TbNumber3Small as ThreeIcon,
+  TbNumber4Small as FourIcon,
+  TbNumber5Small as FiveIcon,
+  TbNumber6Small as SixIcon,
+  TbNumber7Small as SevenIcon,
+  TbNumber8Small as EightIcon,
+  TbNumber9Small as NineIcon,
+  TbNumber10Small as TenIcon,
+  TbNumber11Small as ElevenIcon,
+  TbNumber12Small as TwelveIcon,
+  TbNumber13Small as ThirteenIcon,
+  TbNumber14Small as FourteenIcon,
+  TbNumber15Small as FifteenIcon,
+
+  TbGhost3 as SpookyIcon,
+} from 'react-icons/tb';
