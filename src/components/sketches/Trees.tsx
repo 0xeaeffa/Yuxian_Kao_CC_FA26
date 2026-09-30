@@ -167,6 +167,7 @@ export const Tree2 = () => {
       }
 
       p.setup = () => {
+        p.pixelDensity(1);
         p.createCanvas(384, 576);
         p.angleMode(p.DEGREES);
 
@@ -178,8 +179,8 @@ export const Tree2 = () => {
 
       p.mouseClicked = () => {
         p.clear();
-        p.background('#f6f6f6');
 
+        p.background('#f6f6f6');
         drawTree();
       };
 
