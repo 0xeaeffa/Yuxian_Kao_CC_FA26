@@ -3,7 +3,7 @@ import { useState, useRef, useEffect } from 'preact/hooks';
 import { landingTab, getAssignmentTabs, NumberIcons } from '../utils';
 import { SpookyIcon } from '../styles/icons';
 
-const assignmentTabs = getAssignmentTabs(3);
+const assignmentTabs = getAssignmentTabs(4);
 
 export const Side = () => {
   const { route } = useLocation();
