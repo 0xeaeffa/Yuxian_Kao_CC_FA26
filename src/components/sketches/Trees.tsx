@@ -81,6 +81,7 @@ export const Tree2 = () => {
   useLayoutEffect(() => {
     const instance = new p5((p: p5) => {
       let endpoints: p5.Vector[] = [];
+      let pd: number;
 
       function isOverlap(
         x: number,
@@ -103,8 +104,10 @@ export const Tree2 = () => {
             p.push();
             p.translate(0, 12);
             const m = p.drawingContext.getTransform();
-            if (!isOverlap(m.e, m.f, endpoints, 10)) {
-              endpoints.push(p.createVector(m.e, m.f));
+            pd = p.pixelDensity();
+
+            if (!isOverlap(m.e / pd, m.f / pd, endpoints, 10)) {
+              endpoints.push(p.createVector(m.e / pd, m.f / pd));
             }
             p.pop();
           }
@@ -113,7 +116,9 @@ export const Tree2 = () => {
           if (Math.random() < 0.1) {
             if (h > 16) {
               const m = p.drawingContext.getTransform();
-              endpoints.push(p.createVector(m.e, m.f));
+              pd = p.pixelDensity();
+
+              endpoints.push(p.createVector(m.e / pd, m.f / pd));
             }
             return;
           }
