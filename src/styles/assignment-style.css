@@ -7,4 +7,47 @@
   h2 {
     font-size: 1.6rem;
   }
+  p {
+    line-height: 1.16rem;
+  }
+
+  --section-gap: 1.2rem;
+}
+
+.title-box {
+  margin-bottom: var(--section-gap);
+  .subtitle-box {
+    height: 1rem;
+    /* margin-top: -0.2rem; */
+    margin-left: 0.4rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    .indent-bar {
+      background: #f0f0f0;
+      width: 0.2rem;
+      height: inherit;
+      border-radius: 0.25em;
+    }
+  }
+  p {
+    font-size: 0.6rem;
+  }
+}
+
+.image-wrapper {
+  min-width: 384px;
+  width: 100%;
+  height: 384px;
+  border: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+.image-rotate {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transform: rotate(90deg);
 }

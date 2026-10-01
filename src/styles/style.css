@@ -32,11 +32,11 @@ h1, h2, h3 {
   /* letter-spacing: -0.01em; */
 }
 
-p, a {
+p, a, caption {
   font-family:'DM Mono', monospace;
   font-weight: 400;
   letter-spacing: -0.01em;
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   line-height: 1.5rem;
 }
 
