@@ -84,6 +84,14 @@ main {
   text-align: start;
   overflow: hidden;
   white-space: nowrap;
+
+  .home-text {
+    margin-left: 0.5rem;
+    padding-top: 0.1rem;
+  }
+}
+.sidebar-button.top {
+  width: var(--tab-height);
 }
 
 .landing {

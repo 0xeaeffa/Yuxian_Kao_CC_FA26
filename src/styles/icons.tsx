@@ -16,4 +16,6 @@ export {
   TbNumber15Small as FifteenIcon,
 
   TbGhost3 as SpookyIcon,
+  TbHome as HomeIcon,
+  TbArrowBigLeftLine as LeftArrowIcon,
 } from 'react-icons/tb';
