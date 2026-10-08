@@ -228,9 +228,9 @@ export const Tree3 = () => {
       function branch(h: number, angle: number) {
         h *= 0.78;
         if (h < 4) {
-          if (Math.random() < 0.05) {
+          if (Math.random() < 0.03) {
             p.push();
-            p.translate(0, 12);
+            p.translate(0, 16);
             const m = p.drawingContext.getTransform();
             pd = p.pixelDensity();
 
@@ -240,9 +240,9 @@ export const Tree3 = () => {
             p.pop();
           }
           return;
-        } else if (h < 32) {
+        } else if (h < 36) {
           if (Math.random() < 0.1) {
-            if (h > 16) {
+            if (h > 12) {
               p.push();
               p.translate(0, 2.5);
               const m = p.drawingContext.getTransform();
@@ -280,23 +280,20 @@ export const Tree3 = () => {
         endpoints = [];
         p.translate(p.width / 2, p.height / 2);
 
-        p.push();
-        p.line(0, 5, 0, 18);
-        p.translate(0, 18);
-        branch(54, 24);
-        p.pop();
-
-        p.push();
-        p.rotate(180);
-        p.line(0, 5, 0, 18);
-        p.translate(0, 18);
-        branch(54, 24);
-        p.pop();
+        for (let i = 0; i < 3; i++) {
+          p.push();
+          p.rotate(i * (360 / 3));
+          // p.line(0, 5, 0, 18);
+          p.translate(0, 5);
+          branch(52, 30);
+          p.pop();
+        }
 
         p.ellipse(0, 0, 10, 10);
         p.ellipse(0, 0, 5, 5);
 
-        p.resetMatrix();
+        // p.resetMatrix();
+        p.translate((-1 * p.width) / 2, (-1 * p.height) / 2);
         for (let i = 0; i < endpoints.length; i++) {
           p.ellipse(endpoints[i].x, endpoints[i].y, 5, 5);
         }

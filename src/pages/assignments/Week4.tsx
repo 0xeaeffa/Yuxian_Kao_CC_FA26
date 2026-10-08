@@ -13,7 +13,7 @@ export const Week4 = () => {
         </div>
       </div>
 
-      <Tree3/>
+      {/* <Tree3/> */}
 
       <div style={{ display: 'flex', gap: '1.2rem', height: '576px' }}>
         <Tree2 />
