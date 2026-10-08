@@ -1,6 +1,7 @@
 import { Tree2, Tree3 } from '../../components';
+import { repoName } from '../../utils';
 
-const svgPath = 'public/week-4_output.svg';
+const svgPath = `${repoName}/week-4_output.svg`;
 
 export const Week4 = () => {
   return (
