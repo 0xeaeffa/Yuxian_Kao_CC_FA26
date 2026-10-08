@@ -1,4 +1,4 @@
-import { Tree1, Tree2 } from '../../components';
+import { Tree1, Tree2, Tree3 } from '../../components';
 
 const svgPath = 'public/week-4_output.svg';
 
@@ -12,6 +12,8 @@ export const Week4 = () => {
           <p>This page might be about trees</p>
         </div>
       </div>
+
+      <Tree3/>
 
       <div style={{ display: 'flex', gap: '1.2rem', height: '576px' }}>
         <Tree2 />
