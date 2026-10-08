@@ -101,7 +101,7 @@ main {
 	align-items: center;
 }
 
-@media (max-width: 639px) {
+@media (max-width: 768px) {
   /* main {
     padding: calc(var(--layout-padding) / 2);
     gap: calc(var(--layout-padding) / 2);
