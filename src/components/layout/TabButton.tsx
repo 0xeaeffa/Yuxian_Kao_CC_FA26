@@ -1,7 +1,7 @@
 import { useState } from 'preact/hooks';
-import { TabRouting } from '../utils';
+import { TabRouting } from '../../utils';
 
-const TabButton = ({
+export const TabButton = ({
   open,
   routing,
   icon,
@@ -33,5 +33,3 @@ const TabButton = ({
     </>
   );
 };
-
-export default TabButton;

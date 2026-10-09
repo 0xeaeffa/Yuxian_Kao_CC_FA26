@@ -2,7 +2,7 @@ import { useLocation } from 'preact-iso';
 import { useState, useRef, useEffect } from 'preact/hooks';
 import { landingTab, getAssignmentTabs, NumberIcons } from '../utils';
 import { HomeIcon, LeftArrowIcon } from '../styles/icons';
-import TabButton from './TabButton';
+import { TabButton } from './layout';
 
 const assignmentTabs = getAssignmentTabs(4);
 
