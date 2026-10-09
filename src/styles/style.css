@@ -13,6 +13,7 @@
   -webkit-text-size-adjust: 100%;
 
   /* <--- GLOBAL CSS VARIABLES ---> */
+  --bg-color: #fefefe;
   --transition-time: 0.3s;
   --top-bar-height: 6.4rem;
 
