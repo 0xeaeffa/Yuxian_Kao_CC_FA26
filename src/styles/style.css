@@ -12,9 +12,13 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 
+  /* <--- GLOBAL CSS VARIABLES ---> */
+  --transition-time: 0.3s;
+  --top-bar-height: 6.4rem;
+
+  /* <--- MENU CSS VARIABLES ---> */
   /* --sidebar-padding;*/
   /* --tab-height; */
-  --transition-time: 0.3s;
 }
 
 * {
@@ -58,6 +62,7 @@ main {
   height: 100%;
   display: grid;
   align-items: center;
+  text-align: center;
 }
 
 @media (max-width: 768px) {

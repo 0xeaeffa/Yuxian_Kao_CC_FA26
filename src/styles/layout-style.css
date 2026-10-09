@@ -13,6 +13,7 @@
   height: 100%;
   /* background: green; */
   overflow: auto;
+  text-align: start;
 }
 
 .sidebar-cont {
@@ -21,6 +22,7 @@
   height: 100%;
   padding: var(--sidebar-padding);
   transition: width var(--transition-time);
+  z-index: 1000;
 }
 .sidebar-button {
   height: var(--tab-height);

@@ -1,4 +1,5 @@
 import { Tree2, Tree3 } from '../../components';
+import { PageTitle } from '../../components/layout';
 import { repoName } from '../../utils';
 
 const svgPath = `/${repoName}/week-4_output.svg`;
@@ -6,13 +7,10 @@ const svgPath = `/${repoName}/week-4_output.svg`;
 export const Week4 = () => {
   return (
     <div class='page'>
-      <div class='title-box'>
-        <h2>Week-4 Assignment</h2>
-        <div class='subtitle-box'>
-          <div class='indent-bar' />
-          <p>This page might be about trees</p>
-        </div>
-      </div>
+      <PageTitle
+        title='Week-4 Assignment'
+        subtitle='This page might be about trees'
+      />
 
       <div class='div-two-columns'>
         <div class='div-centered'>
@@ -78,7 +76,7 @@ export const Week4 = () => {
         </div>
       </div>
 
-      <div class='div-centered' style={{ paddingBottom: '1.2rem' }}>
+      <div class='div-centered'>
         <p>
           Just when I thought I was done debugging, what seemed to be the same
           issue happened again when exporting the sketch to an SVG (fig. right).
@@ -93,13 +91,7 @@ export const Week4 = () => {
 
       <div style={{ paddingBottom: '1.2rem' }} class='divider' />
 
-      <div class='title-box'>
-        <h2>Week-5 Update</h2>
-        <div class='subtitle-box'>
-          <div class='indent-bar' />
-          <p>I fix my tree</p>
-        </div>
-      </div>
+      {/* <PageTitle title='Week-5 Update' subtitle='I fix my tree' /> */}
 
       <div class='div-two-columns'>
         <div class='div-centered'>
