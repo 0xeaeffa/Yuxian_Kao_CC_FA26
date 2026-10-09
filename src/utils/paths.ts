@@ -3,6 +3,11 @@ export const repoName = "Yuxian_Kao_CC_FA26";
 
 export const landingTab = { name: 'landing page', route: `/${repoName}` };
 
+export interface TabRouting {
+  name: string;
+  route:string;
+}
+
 export function getAssignmentTabs(total: number) {
   const assignmentTabs = [];
   for (let i = 0; i < total; i++) {

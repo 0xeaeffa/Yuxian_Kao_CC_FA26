@@ -2,6 +2,7 @@ import { useLocation } from 'preact-iso';
 import { useState, useRef, useEffect } from 'preact/hooks';
 import { landingTab, getAssignmentTabs, NumberIcons } from '../utils';
 import { HomeIcon, LeftArrowIcon } from '../styles/icons';
+import TabButton from './TabButton';
 
 const assignmentTabs = getAssignmentTabs(4);
 
@@ -9,7 +10,7 @@ export const Side = () => {
   const { route } = useLocation();
   const ref = useRef<HTMLDivElement>(null);
   const [open, setOpen] = useState<boolean>(true);
-  const [openLabel, setOpenLabel] = useState<boolean>(false);
+  // const [openLabel, setOpenLabel] = useState<boolean>(false);
 
   const handleNavigate = (routePath: string) => {
     route(routePath, false);
@@ -24,6 +25,7 @@ export const Side = () => {
       const r = ref.current;
       r.style.setProperty('--sidebar-padding', padding);
       r.style.setProperty('--tab-height', tabHeight);
+      r.style.setProperty('--tab-gap', tabGap);
       r.style.setProperty('--tab-button-corner', tabButtonCorner);
     }
   }, []);
@@ -60,39 +62,14 @@ export const Side = () => {
       </button>
 
       {assignmentTabs.map((r, i) => (
-        <>
-          <div key={`sidebar-${r.name}`}>
-            <button
-              className={`sidebar-button ${location.pathname === r.route && 'selected'}`}
-              onClick={() => handleNavigate(r.route)}
-              onMouseOver={() => setOpenLabel(!open)}
-              onMouseLeave={() => setOpenLabel(false)}
-            >
-              {open ? <p>{r.name}</p> : getIcon(i)}
-            </button>
-          </div>
-
-          {/* reminder to make a tab button component */}
-          {openLabel && (
-            <div
-              style={{
-                position: 'absolute',
-                height: tabHeight,
-                background: 'rgba(255,255,255,0.5)',
-                marginTop: `calc(calc(-1 * ${tabHeight}) - ${tabGap})`,
-                marginLeft: `calc(${tabHeight} + ${tabGap})`,
-                padding: '0rem 0.8rem',
-                display: 'flex',
-                alignItems: 'center',
-
-                borderRadius: tabButtonCorner,
-                border: '1px solid grey',
-              }}
-            >
-              <p>{r.name}</p>
-            </div>
-          )}
-        </>
+        <div key={`sidebar-${r.name}`}>
+          <TabButton
+            open={open}
+            routing={{ name: r.name, route: r.route }}
+            icon={getIcon(i)}
+            onNavigate={handleNavigate}
+          />
+        </div>
       ))}
     </div>
   );
