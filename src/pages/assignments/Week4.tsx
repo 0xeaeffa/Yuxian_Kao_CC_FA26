@@ -1,3 +1,4 @@
+import { useLocation } from 'preact-iso';
 import { Tree2, Tree3 } from '../../components';
 import { PageTitle } from '../../components/layout';
 import { repoName } from '../../utils';
@@ -5,6 +6,11 @@ import { repoName } from '../../utils';
 const svgPath = `/${repoName}/week-4_output.svg`;
 
 export const Week4 = () => {
+  const { route } = useLocation();
+  const handleNavigate = () => {
+    route(`/${repoName}/week5-assignment`, false);
+  };
+
   return (
     <div class='page'>
       <PageTitle
@@ -89,20 +95,20 @@ export const Week4 = () => {
         </p>
       </div>
 
-      <div style={{ paddingBottom: '1.2rem' }} class='divider' />
+      <div class='divider' />
 
-      {/* <PageTitle title='Week-5 Update' subtitle='I fix my tree' /> */}
-
-      <div class='div-two-columns'>
-        <div class='div-centered'>
-          <Tree3 />
-        </div>
-        <div style={{ height: '100%', display: 'flex', alignItems: 'center' }}>
-          <p>
-            {`it was the resetMatrix() function that hecked up my ellipses'
-          translation. \na circle of tree is also cool :)`}
-          </p>
-        </div>
+      <div>
+        <button
+          style={{
+            fontFamily: '"DM mono", monospace',
+            fontSize: '0.7rem',
+            padding: '0.6rem',
+            marginBottom: '1.2rem',
+          }}
+          onClick={handleNavigate}
+        >
+          I did fixed the issue the week after →
+        </button>
       </div>
     </div>
   );
