@@ -5,7 +5,7 @@ const svgPath = `/${repoName}/week-4_output.svg`;
 
 export const Week4 = () => {
   return (
-    <div class='assignment'>
+    <div class='page'>
       <div class='title-box'>
         <h2>Week-4 Assignment</h2>
         <div class='subtitle-box'>
@@ -13,8 +13,6 @@ export const Week4 = () => {
           <p>This page might be about trees</p>
         </div>
       </div>
-
-      {/* <Tree3/> */}
 
       <div class='div-two-columns'>
         <div class='div-centered'>
@@ -95,13 +93,11 @@ export const Week4 = () => {
 
       <div style={{ paddingBottom: '1.2rem' }} class='divider' />
 
-      <div>
-        <div class='title-box'>
-          <h2>Week-5 Update</h2>
-          <div class='subtitle-box'>
-            <div class='indent-bar' />
-            <p>I fix my tree</p>
-          </div>
+      <div class='title-box'>
+        <h2>Week-5 Update</h2>
+        <div class='subtitle-box'>
+          <div class='indent-bar' />
+          <p>I fix my tree</p>
         </div>
       </div>
 

@@ -7,7 +7,8 @@ import { Landing, Week1, Week2, Week3, Week4 } from './pages';
 import { Side } from './components';
 
 import './styles/style.css';
-import './styles/assignment-style.css';
+import './styles/layout-style.css';
+import './styles/page-style.css';
 
 function NotFound() {
   const { route } = useLocation();

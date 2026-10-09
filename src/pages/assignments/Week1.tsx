@@ -1,6 +1,6 @@
 export function Week1() {
   return (
-    <div class='assignment'>
+    <div class='page'>
       <h2>Week-1 Assignment</h2>
       <blockquote class='twitter-tweet' data-media-max-width='560'>
         <p lang='en' dir='ltr'>
