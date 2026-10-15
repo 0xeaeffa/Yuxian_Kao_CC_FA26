@@ -4,3 +4,4 @@ export * from './assignments/Week2';
 export * from './assignments/Week3';
 export * from './assignments/Week4';
 export * from './assignments/Week5';
+export * from './assignments/Week6';

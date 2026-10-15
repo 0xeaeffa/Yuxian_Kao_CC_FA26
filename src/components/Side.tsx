@@ -4,7 +4,7 @@ import { landingTab, getAssignmentTabs, NumberIcons } from '../utils';
 import { HomeIcon, LeftArrowIcon } from '../styles/icons';
 import { TabButton } from './layout';
 
-const assignmentTabs = getAssignmentTabs(5);
+const assignmentTabs = getAssignmentTabs(6);
 
 export const Side = () => {
   const { route } = useLocation();
