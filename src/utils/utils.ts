@@ -25,6 +25,10 @@ export const degreesToRadians = (degrees: number): number => {
   return degrees * (Math.PI / 180);
 };
 
+export const getDocumentRem = () => {
+  return parseFloat(getComputedStyle(document.documentElement).fontSize);
+};
+
 import {
   OneIcon,
   TwoIcon,
