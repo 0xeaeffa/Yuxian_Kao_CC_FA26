@@ -14,6 +14,8 @@
 
   /* <--- GLOBAL CSS VARIABLES ---> */
   --bg-color: #fefefe;
+  --border-color: rgba(0,0,0,0.16);
+  --shadow-color: rgba(0,0,0,0.2);
   --transition-time: 0.3s;
   --top-bar-height: 6.4rem;
 

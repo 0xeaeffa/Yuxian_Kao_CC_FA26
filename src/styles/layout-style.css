@@ -48,7 +48,7 @@
 .sidebar-button-label {
   position: absolute;
   height: var(--tab-height);
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.8);
   margin-top: calc(calc(-1 * var(--tab-height)) - var(--tab-gap));
   margin-left: calc(var(--tab-height) + var(--tab-gap));
   padding: 0rem 0.8rem;
@@ -56,5 +56,8 @@
   align-items: center;
 
   border-radius: var(--tab-button-corner);
-  border: 1px solid grey;
+  border: 1px solid var(--border-color);
+  backdrop-filter: blur(1px);
+  box-shadow: 1px 2px 2px var(--shadow-color);
+  transition: all var(--transition-time);
 }

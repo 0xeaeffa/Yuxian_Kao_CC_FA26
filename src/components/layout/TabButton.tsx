@@ -25,11 +25,9 @@ export const TabButton = ({
         {open ? <p>{routing.name}</p> : icon}
       </button>
 
-      {openLabel && (
-        <div class='sidebar-button-label'>
-          <p>{routing.name}</p>
-        </div>
-      )}
+      <div class='sidebar-button-label' style={{ opacity: openLabel ? 1 : 0 }}>
+        <p>{routing.name}</p>
+      </div>
     </>
   );
 };

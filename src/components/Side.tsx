@@ -9,7 +9,7 @@ const assignmentTabs = getAssignmentTabs(5);
 export const Side = () => {
   const { route } = useLocation();
   const ref = useRef<HTMLDivElement>(null);
-  const [open, setOpen] = useState<boolean>(true);
+  const [open, setOpen] = useState<boolean>(false);
   // const [openLabel, setOpenLabel] = useState<boolean>(false);
 
   const handleNavigate = (routePath: string) => {
