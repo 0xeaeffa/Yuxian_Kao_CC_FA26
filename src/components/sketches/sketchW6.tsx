@@ -3,11 +3,16 @@ import p5 from 'p5';
 import { getDocumentRem } from '../../utils';
 
 const rem = getDocumentRem();
-function getWidth(p:p5) {
-  if(p.windowWidth < 786) {
-    return p.windowWidth - (rem * 4.2);
+function getWidth(p: p5) {
+  if (p.windowWidth < 786) {
+    return p.windowWidth - rem * 4.2;
   }
   return Math.min(p.windowWidth - rem * 16, 1080);
+}
+function getHeight(p: p5) {
+  // 6.4rem is the page title height (top bar height)
+  // add 1.2rem for good measures and fun
+  return Math.min(p.windowHeight - rem * (6.4 + 1.2), 720 - rem * (6.4 + 1.2));
 }
 
 class Fish {
@@ -133,7 +138,8 @@ export const Sketch6_1 = () => {
     const instance = new p5((p: p5) => {
       const bgcolor = '#f0f0f0';
       let width = getWidth(p);
-      let height = Math.min(p.windowHeight - rem * 1.2, 640);
+      let height = getHeight(p);
+      // 6.4rem is the top bar height (for page title)
 
       const fish: Fish[] = [];
       const fishAmount = 18;
@@ -204,7 +210,7 @@ export const Sketch6_1 = () => {
 
       p.windowResized = () => {
         width = getWidth(p);
-        height = Math.min(p.windowHeight - rem * 1.2, 640);
+        height = getHeight(p);
         p.resizeCanvas(width, height);
         p.background(bgcolor);
       };

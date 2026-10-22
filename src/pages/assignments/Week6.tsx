@@ -25,16 +25,11 @@ export const Week6 = () => {
   }, [width, height]);
 
   return (
-    <div
-      class='page'
-      ref={pageRef}
-      style={{ height: '100%', display: 'grid', placeItems: 'center' }}
-    >
-      {/* <PageTitle
-        title='Week-5 Update'
-        subtitle='adding this section almost borke all my layout, but hey I fixed my tree'
-      /> */}
-      <Sketch6_1 />
+    <div class='page' ref={pageRef}>
+      <PageTitle title='Week-6 Assignment' subtitle='fih' />
+      <div style={{ height: '100%', display: 'grid', placeItems: 'center', padding: 0 }}>
+        <Sketch6_1 />
+      </div>
     </div>
   );
 };
