@@ -7,6 +7,8 @@ const rem = getDocumentRem();
 class Fish {
   p: p5;
   length: number;
+  scale: number;
+  speed: number;
   strokeWidth: number;
   strokeColor: p5.Color;
   fillColor: p5.Color;
@@ -15,22 +17,32 @@ class Fish {
   swimRadius: number;
   swimOffset: number;
 
+  angle: number;
+
   constructor(
     p: p5,
     length: number = 100,
-    strokeWidth: number = 2,
-    strokeColor?: p5.Color,
-    fillColor?: p5.Color,
+    scale: number = 1,
+    speed: number = 0.025,
+
     swimRadius?: number,
     swimOffset?: number,
+
+    fillColor?: p5.Color,
+    strokeColor?: p5.Color,
+    strokeWidth?: number,
   ) {
     this.p = p;
     this.length = length;
-    this.strokeWidth = strokeWidth;
+    this.scale = scale;
+    this.speed = speed;
+    this.strokeWidth = strokeWidth ? strokeWidth : 2;
     this.strokeColor = strokeColor ? strokeColor : p.color(0);
     this.fillColor = fillColor ? fillColor : p.color(255);
     this.swimRadius = swimRadius ? swimRadius : 100;
-    this.swimOffset = swimOffset? swimOffset : 0;
+    this.swimOffset = swimOffset ? swimOffset : 0;
+
+    this.angle = 0;
 
     this.padding = 20;
     const bufferW = 60 + this.padding * 2;
@@ -41,13 +53,15 @@ class Fish {
   }
 
   private shape(g: p5.Graphics) {
+    g.push();
+    g.scale(this.scale);
     g.fill(this.fillColor);
     g.stroke(this.strokeColor);
     g.strokeWeight(this.strokeWidth);
     g.bezier(0, 0, -20, 20, 0, 50, 0, this.length);
     g.bezier(-9, 22, -24, 48, -24, 50, -8, 34);
+    g.pop();
   }
-
   renderStatic() {
     const g = this.buffer;
 
@@ -61,23 +75,24 @@ class Fish {
     g.pop();
 
     g.loadPixels();
-    // this.p.image(g, -1 * (g.width / 2), -this.padding);
   }
 
-  swim(x: number, y: number, t: number, rotate: number = 0, shift: number = 0) {
+  swim(t: number, shift: number = 0) {
     const src = this.buffer;
     const dst = this.p.createImage(src.width, src.height);
     dst.loadPixels();
 
+    const rPercent = this.p.map(this.swimRadius, 60, 240, 0, 1);
+
     for (let j = 0; j < src.height; j++) {
-      const a = 7;
-      const waveLength = 84;
+      const a = this.p.map(rPercent, 0, 1, 7, 10);
+      const waveLength = 64;
       const freq = (j / waveLength) * Math.PI;
       const effect = Math.min(Math.max(j / this.length, 0), 1);
 
-      const offset = Math.round(
-        effect * a * Math.sin(freq - (t * 0.3 + shift)),
-      );
+      // i don't rember what b is but it's like how fast its scrolling through the offset
+      const b = this.p.map(rPercent, 0, 1, 0.4, 0.55);
+      const offset = Math.round(effect * a * Math.sin(freq - (t * b + shift)));
 
       for (let i = 0; i < src.width; i++) {
         const srcCol = i - offset; // reference the offset pixel from src
@@ -97,12 +112,11 @@ class Fish {
       }
     }
     dst.updatePixels();
-    this.p.rotate(rotate);
-    this.p.image(dst, x - src.width / 2, y - this.padding);
+    this.p.image(dst, 0 - src.width / 2, 0 - this.padding);
   }
 
-  update() {
-    // this.swim()
+  updateAngle() {
+    this.angle -= this.speed;
   }
 }
 
@@ -116,46 +130,70 @@ export const Sketch6_1 = () => {
       let height = Math.min(p.windowHeight, 640);
 
       const fish: Fish[] = [];
-      const fishAmount = 8;
-
-      let fih: Fish;
-      let r = 100;
-      let angle = 0;
-
-      // const v = p.createVector(r, 0);
-      // let w = v.mag() / r;
-      // let alfa = 0.1;
-      // let fi = 0;
+      const fishAmount = 18;
 
       p.setup = () => {
         p.createCanvas(width, height);
         // p.angleMode(p.DEGREES);
-        p.background(bgcolor);
         p.frameRate(30);
 
-        fih = new Fish(p, 110, 2, p.color('#444'), p.color('#444'));
         for (let i = 0; i < fishAmount; i++) {
-          let color = Math.round(p.map(Math.random(), 0, 1, 20, 200));
-          let swimR = Math.round(p.map(Math.random(), 0, 1, 80, 120));
-          let swimO = Math.round(p.map(Math.random(), 0, 1, 80, 120));
-          fish.push(new Fish(p, 110, 2, p.color(color), p.color(color), swimR, swimO));
+          let scale = i * ((1 - 0.4) / fishAmount) + 0.4;
+          let color = Math.round(p.map(1 - scale, 0, 1, 50, 250));
+
+          let radius = Math.random();
+          let swimR = Math.round(p.map(radius, 0, 1, 60, 240));
+          let speed = p.map(1 - radius, 0, 1, 0.016, 0.05);
+
+          let swimO = Math.round(p.map(Math.random(), 0, 1, 0, 180));
+
+          fish.push(
+            new Fish(
+              p,
+              110,
+              scale,
+              speed,
+              swimR,
+              swimO,
+              p.color(color),
+              p.color(color),
+            ),
+          );
         }
       };
 
       p.draw = () => {
-        p.background(220);
+        p.background(bgcolor);
         p.translate(width / 2, height / 2);
 
-        p.push();
-        // w = (w+alfa)/p.frameRate();
-        // fi =  (fi+w)/p.frameRate();
+        for (let i = 0; i < fishAmount; i++) {
+          p.push();
+          let f = fish[i];
+          p.noFill();
+          p.stroke('rgba(0,0,0,0.02)');
+          p.strokeWeight(6);
+          p.ellipse(0, 0, f.swimRadius * 2, f.swimRadius * 2);
 
-        const x = r * Math.cos(angle);
-        const y = r * Math.sin(angle);
-        fih.swim(x, y, p.frameCount, angle);
-        p.pop();
+          p.stroke('rgba(0,0,0,0.06)');
+          p.strokeWeight(1);
+          p.ellipse(0, 0, f.swimRadius * 2, f.swimRadius * 2);
+          p.pop();
+        }
 
-        angle -= 0.01;
+        for (let i = 0; i < fishAmount; i++) {
+          p.push();
+          let f = fish[i];
+          const pos = f.angle + f.swimOffset;
+          const x = f.swimRadius * Math.cos(pos);
+          const y = f.swimRadius * Math.sin(pos);
+          const rotateAngle = Math.atan2(y, x);
+
+          p.translate(x, y);
+          p.rotate(rotateAngle);
+          f.swim(p.frameCount, f.swimOffset);
+          f.updateAngle();
+          p.pop();
+        }
       };
 
       p.windowResized = () => {
