@@ -3,6 +3,12 @@ import p5 from 'p5';
 import { getDocumentRem } from '../../utils';
 
 const rem = getDocumentRem();
+function getWidth(p:p5) {
+  if(p.windowWidth < 786) {
+    return p.windowWidth - (rem * 4.2);
+  }
+  return Math.min(p.windowWidth - rem * 16, 1080);
+}
 
 class Fish {
   p: p5;
@@ -126,8 +132,8 @@ export const Sketch6_1 = () => {
   useLayoutEffect(() => {
     const instance = new p5((p: p5) => {
       const bgcolor = '#f0f0f0';
-      let width = Math.min(p.windowWidth - rem * 12, 1080);
-      let height = Math.min(p.windowHeight, 640);
+      let width = getWidth(p);
+      let height = Math.min(p.windowHeight - rem * 1.2, 640);
 
       const fish: Fish[] = [];
       const fishAmount = 18;
@@ -197,8 +203,8 @@ export const Sketch6_1 = () => {
       };
 
       p.windowResized = () => {
-        width = Math.min(p.windowWidth - rem * 12, 1080);
-        height = Math.min(p.windowHeight, 640);
+        width = getWidth(p);
+        height = Math.min(p.windowHeight - rem * 1.2, 640);
         p.resizeCanvas(width, height);
         p.background(bgcolor);
       };
@@ -209,3 +215,5 @@ export const Sketch6_1 = () => {
 
   return <div ref={canvasRef} style={{ padding: 0 }} />;
 };
+
+export const Sketch6_2 = () => {};
