@@ -17,12 +17,28 @@
 }
 
 .sidebar-cont {
-  /* background: pink; */
+  background: #eaeffa;
   width: 12rem;
   height: 100%;
-  padding: var(--sidebar-padding);
+  /* padding: var(--sidebar-padding); */
   transition: width var(--transition-time);
   z-index: 1000;
+}
+.sidebar-top-bar {
+  background: pink;
+  height: var(--top-bar-height);
+  padding: var(--sidebar-padding);
+  display: flex;
+  gap: var(--sidebar-padding);
+  align-items: center;
+  justify-content: center;
+}
+.sidebar-cont-assignments {
+  /* background: green; */
+  padding: var(--sidebar-padding);
+  display: flex;
+  flex-direction: column;
+  gap: var(--tab-gap);
 }
 .sidebar-button {
   height: var(--tab-height);
@@ -31,7 +47,7 @@
   align-items: center;
   justify-content: start;
   padding: 0.6rem;
-  margin-bottom: calc(var(--sidebar-padding) / 2);
+  /* margin-bottom: calc(var(--sidebar-padding) / 2); */
   text-align: start;
   overflow: hidden;
   white-space: nowrap;
@@ -41,9 +57,13 @@
     padding-top: 0.1rem;
   }
 }
-/* this might have to go */
 .sidebar-button.top {
-  width: var(--tab-height);
+  display: flex;
+  justify-content: center;
+  transition: height var(--transition-time);
+}
+.sidebar-button.top.open {
+  height: 100%;
 }
 .sidebar-button-label {
   position: absolute;

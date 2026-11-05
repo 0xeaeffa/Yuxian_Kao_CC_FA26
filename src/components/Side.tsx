@@ -18,7 +18,7 @@ export const Side = () => {
 
   const tabHeight = '2.4rem';
   const padding = '0.4rem';
-  const tabGap = `calc(${padding} / 2)`;
+  const tabGap = `calc(${padding} / 1)`;
   const tabButtonCorner = '0.2rem';
   useEffect(() => {
     if (ref.current) {
@@ -43,34 +43,42 @@ export const Side = () => {
         width: open ? '12rem' : `calc(${tabHeight} + calc(${padding} * 2))`,
       }}
     >
-      <button className='sidebar-button top' onClick={() => setOpen((p) => !p)}>
-        <LeftArrowIcon
-          size={'1rem'}
-          style={{
-            transform: open ? 'rotate(0deg)' : 'rotate(180deg)',
-            transition: 'transform 0.2s',
-          }}
-        />
-      </button>
-
-      <button
-        className={`sidebar-button ${location.pathname === landingTab.route && 'selected'}`}
-        onClick={() => handleNavigate(landingTab.route)}
+      <div
+        class='sidebar-top-bar'
+        style={{ flexDirection: open ? 'row' : 'column' }}
       >
-        <HomeIcon size={'1rem'} />
-        {open && <p class='home-text'>Landing (alleged)</p>}
-      </button>
-
-      {assignmentTabs.map((r, i) => (
-        <div key={`sidebar-${r.name}`}>
-          <TabButton
-            open={open}
-            routing={{ name: r.name, route: r.route }}
-            icon={getIcon(i)}
-            onNavigate={handleNavigate}
+        <button
+          class={`sidebar-button top ${open && 'open'}`}
+          onClick={() => setOpen((p) => !p)}
+        >
+          <LeftArrowIcon
+            size={'1rem'}
+            style={{
+              transform: open ? 'rotate(0deg)' : 'rotate(180deg)',
+              transition: 'transform 0.2s',
+            }}
           />
-        </div>
-      ))}
+        </button>
+        <button
+          class={`sidebar-button top ${open && 'open'}`}
+          onClick={() => handleNavigate(landingTab.route)}
+        >
+          <HomeIcon size={'1rem'} />
+        </button>
+      </div>
+
+      <div class='sidebar-cont-assignments'>
+        {assignmentTabs.map((r, i) => (
+          <div key={`sidebar-${r.name}`}>
+            <TabButton
+              open={open}
+              routing={{ name: r.name, route: r.route }}
+              icon={getIcon(i)}
+              onNavigate={handleNavigate}
+            />
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
