@@ -49,6 +49,12 @@ export const Side = () => {
       >
         <button
           class={`sidebar-button top ${open && 'open'}`}
+          onClick={() => handleNavigate(landingTab.route)}
+        >
+          <HomeIcon size={'1rem'} />
+        </button>
+        <button
+          class={`sidebar-button top ${open && 'open'}`}
           onClick={() => setOpen((p) => !p)}
         >
           <LeftArrowIcon
@@ -58,12 +64,6 @@ export const Side = () => {
               transition: 'transform 0.2s',
             }}
           />
-        </button>
-        <button
-          class={`sidebar-button top ${open && 'open'}`}
-          onClick={() => handleNavigate(landingTab.route)}
-        >
-          <HomeIcon size={'1rem'} />
         </button>
       </div>
 
