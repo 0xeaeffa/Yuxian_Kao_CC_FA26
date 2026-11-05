@@ -7,7 +7,12 @@
   h2 {
     font-size: 2rem;
   }
-  p {
+  h3 {
+    font-size: 1.3rem;
+    line-height: 1.5rem;
+    margin-bottom: 0.6rem;
+  }
+  p, li {
     line-height: 1.16rem;
   }
 
@@ -32,7 +37,7 @@
     height: 1rem;
     margin-left: 0.4rem;
     display: flex;
-    align-items: center;
+    align-items: start;
     gap: 0.6rem;
     .indent-bar {
       background: #f0f0f0;
@@ -43,6 +48,8 @@
   }
   p {
     font-size: 0.66rem;
+    color: var(--text2-color);
+    margin-top: -1px;
   }
 }
 .pblur-cont {

@@ -18,14 +18,14 @@ export const Week7 = () => {
       </div>
 
       <div class='div-centered'>
-        <p>Visual Elements</p>
+        <h3>Visual Elements</h3>
         <ul>
           <li>Simulated snow fall (rotation, oscillating scaleX value)</li>
           <li>Natural downward motion (sin() + linear directional constant)</li>
         </ul>
       </div>
       <div class='div-centered'>
-        <p>Key Parameters</p>
+        <h3>Key Parameters</h3>
         <ul>
           <li>
             Customizable parameters that makes each object instance unique

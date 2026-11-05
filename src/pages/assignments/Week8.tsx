@@ -18,7 +18,7 @@ export const Week8 = () => {
       </div>
 
       <div class='div-centered'>
-        <p>Changelog</p>
+        <h3>Changelog</h3>
         <ul>
           <li>Adjust for wider range of scale in snowflake’s instantiation</li>
           <li>
