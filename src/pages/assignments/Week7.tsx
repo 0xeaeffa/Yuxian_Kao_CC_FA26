@@ -1,5 +1,4 @@
 import { PageTitle } from '../../components/layout';
-import { Sketch6_1 } from '../../components/sketches/sketchW6';
 import { repoName } from '../../utils';
 
 const vidPath = `${repoName}/week7-winter_1.mp4`;
