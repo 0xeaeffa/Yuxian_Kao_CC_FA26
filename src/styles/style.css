@@ -20,11 +20,11 @@
   --transition-time: 0.3s;
 
   --top-bar-height: 6.4rem;
-  /* --top-bar-padding: 1.2rem; */
 
   /* <--- MENU CSS VARIABLES ---> */
   /* --sidebar-padding;*/
   /* --tab-height; */
+  /* --tab-button-corner */
 }
 
 * {

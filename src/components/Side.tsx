@@ -19,7 +19,7 @@ export const Side = () => {
   const tabHeight = '2.4rem';
   const padding = '0.4rem';
   const tabGap = `calc(${padding} / 1)`;
-  const tabButtonCorner = '0.2rem';
+  const tabButtonCorner = '4px';
   useEffect(() => {
     if (ref.current) {
       const r = ref.current;

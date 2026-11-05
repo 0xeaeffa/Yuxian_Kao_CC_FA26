@@ -52,24 +52,56 @@
   overflow: hidden;
   white-space: nowrap;
 
+  border: 1px solid var(--border-color);
+  border-radius: var(--tab-button-corner);
+  background: linear-gradient(#f2f2f2, #f9f9f9);
+  box-shadow:
+    inset 2px 2px 0px rgba(255, 255, 255, 1),
+    inset -2px -3px 0px rgba(0, 0, 0, 0.08),
+    -1px -2px 6px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s;
+
   .home-text {
     margin-left: 0.5rem;
     padding-top: 0.1rem;
   }
 }
+.sidebar-button:hover {
+  margin-top: -3px;
+  margin-bottom: 3px;
+  box-shadow:
+    inset 2px 2px 0px rgba(255, 255, 255, 1),
+    inset -2px -3px 1px rgba(0, 0, 0, 0.08),
+    0px 3px 2px var(--shadow-color);
+}
+.sidebar-button:active {
+  margin: 0;
+  background: linear-gradient(#e8e8e8, #efefef);
+  box-shadow:
+    inset 2px 2px 0px rgba(255, 255, 255, 1),
+    inset -2px -3px 0px rgba(0, 0, 0, 0.08),
+    -1px -2px 6px rgba(0, 0, 0, 0.04);
+}
 .sidebar-button.top {
   display: flex;
   justify-content: center;
-  transition: height var(--transition-time);
+  transition: all var(--transition-time);
+}
+.sidebar-button.selected {
+  background: #f0f0f0;
+  box-shadow: inset 1px 4px 2px var(--shadow-color), 1px 1px 0px white;
+}
+.sidebar-button.selected:hover {
+  margin: 0;
 }
 .sidebar-button.top.open {
-  height: 100%;
+  height: 80%;
 }
 .sidebar-button-label {
   position: absolute;
   height: var(--tab-height);
   background: rgba(255, 255, 255, 0.8);
-  margin-top: calc(calc(-1 * var(--tab-height)) - var(--tab-gap));
+  margin-top: calc(-1 * var(--tab-height));
   margin-left: calc(var(--tab-height) + var(--tab-gap));
   padding: 0rem 0.8rem;
   display: flex;

@@ -36,7 +36,12 @@ export const Week8 = () => {
         </ul>
       </div>
 
-      <div class='divider' />
+      <div class='divider' style={{ padding: 0 }} />
+
+      <div class='div-centered'>
+        <h3>Reflection</h3>
+        <p></p>
+      </div>
     </div>
   );
 };
