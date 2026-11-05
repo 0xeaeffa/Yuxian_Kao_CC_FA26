@@ -1,7 +1,7 @@
 import { PageTitle } from '../../components/layout';
 import { repoName } from '../../utils';
 
-const vidPath = `${repoName}/week7-winter_1.mp4`;
+const vidPath = `/${repoName}/week7-winter_1.mp4`;
 // const vidPath = 'week7-winter_1.mp4';
 
 export const Week7 = () => {
