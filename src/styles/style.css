@@ -43,7 +43,7 @@ h1, h2, h3 {
   /* letter-spacing: -0.01em; */
 }
 
-p, a, caption {
+p, a, caption, li {
   font-family:
     DM Mono,
     monospace;
