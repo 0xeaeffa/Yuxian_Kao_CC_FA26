@@ -3,7 +3,17 @@ import { useEffect } from 'preact/hooks';
 import { LocationProvider, Router, Route, useLocation } from 'preact-iso';
 import { repoName, getAssignmentPaths } from './utils';
 
-import { Landing, Week1, Week2, Week3, Week4, Week5, Week6, Week7 } from './pages';
+import {
+  Landing,
+  Week1,
+  Week2,
+  Week3,
+  Week4,
+  Week5,
+  Week6,
+  Week7,
+  Week8,
+} from './pages';
 import { Side } from './components';
 
 import './styles/style.css';
@@ -19,10 +29,10 @@ function NotFound() {
   return null;
 }
 function assignmentPathsMap() {
-  const assignment = [Week1, Week2, Week3, Week4, Week5, Week6, Week7];
+  const assignment = [Week1, Week2, Week3, Week4, Week5, Week6, Week7, Week8];
   return assignment.map((a, i) => ({
     component: a,
-    path: getAssignmentPaths(7)[i],
+    path: getAssignmentPaths(8)[i],
   }));
 }
 
