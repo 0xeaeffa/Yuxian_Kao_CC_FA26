@@ -62,7 +62,7 @@ class Guy {
 
     let dx = this.pos.x - pos.x;
     let dy = this.pos.y - pos.y;
-    let rot = Math.atan2(dy, dx) - Math.PI/2;
+    let rot = Math.atan2(dy, dx) - p.PI/2;
     this.rot = p.lerp(this.rot, rot, this.lerp);
 
     p.push();
