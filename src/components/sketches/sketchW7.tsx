@@ -15,6 +15,7 @@ function getHeight(p: p5) {
   return Math.min(p.windowHeight - rem * (6.4 + 1.2), 720 - rem * (6.4 + 1.2));
 }
 
+// i didn't finish transfering the snowflakes over oop
 export const Sketch7 = () => {
   const canvasRef = useRef<HTMLDivElement>(null);
 

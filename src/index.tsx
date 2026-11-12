@@ -13,6 +13,7 @@ import {
   Week6,
   Week7,
   Week8,
+  Week9,
 } from './pages';
 import { Side } from './components';
 
@@ -29,10 +30,20 @@ function NotFound() {
   return null;
 }
 function assignmentPathsMap() {
-  const assignment = [Week1, Week2, Week3, Week4, Week5, Week6, Week7, Week8];
+  const assignment = [
+    Week1,
+    Week2,
+    Week3,
+    Week4,
+    Week5,
+    Week6,
+    Week7,
+    Week8,
+    Week9,
+  ];
   return assignment.map((a, i) => ({
     component: a,
-    path: getAssignmentPaths(8)[i],
+    path: getAssignmentPaths(9)[i],
   }));
 }
 
