@@ -8,7 +8,7 @@ const vidPath = `/${repoName}/week7-winter_2.mp4`;
 export const Week9 = () => {
   return (
     <div class='page'>
-      <PageTitle title='Week-9' subtitle='where am i who am i' />
+      <PageTitle title='Week-9' subtitle='I used the hand tracking one' />
       <div style={{ display: 'grid', width: '100%', placeItems: 'center' }}>
         <Sketch9 />
       </div>
